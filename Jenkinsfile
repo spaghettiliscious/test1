@@ -28,7 +28,7 @@ pipeline {
                     sh """
                         docker run -d --name app-test -p 8090:80 ${DOCKER_HUB_USER}/${IMAGE_NAME}
                         sleep 5
-                        curl -f http://localhost:8080/index.html || (echo "Test fallito" && exit 1)
+                        curl -f http://localhost:8090/ || (echo "Test fallito" && exit 1)
                         docker stop app-test
                         docker rm app-test
                     """
